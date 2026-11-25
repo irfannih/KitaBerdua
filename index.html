@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kita Berdua</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Caveat:wght@700&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ====== MENU ====== -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#timeline">Jejak</a>
+  <a href="#photobooth">Photobooth 📸</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#wishlist">Wishlist</a>
+  <a href="#data">Data Diri</a>
+</nav>
+
+<!-- ====== JUDUL ====== -->
+<section class="hero">
+  <span class="stiker s1">✦ Est. 2026</span>
+  <span class="stiker s2">⚡ 99% Nyambung</span>
+  <span class="stiker s3">🍜 Partner Jajan</span>
+
+  <!-- GANTI: nama kalian -->
+  <h1>EPANNN<br>&amp; <em>IPAAA</em></h1>
+  <p class="tagline">Dua orang yang kebetulan searah.</p>
+</section>
+
+<!-- ====== PITA TEKS BERJALAN ====== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>✦ KITA BERDUA</span>
+    <span>✦ ANTI DRAMA</span>
+    <span>✦ HOBI CARI MAKAN</span>
+    <span>✦ SEFREKUENSI</span>
+    <span>✦ KITA BERDUA</span>
+    <span>✦ ANTI DRAMA</span>
+    <span>✦ HOBI CARI MAKAN</span>
+    <span>✦ SEFREKUENSI</span>
+  </div>
+</div>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <h2>About</h2>
+  <div class="about">
+    <p>Kami ketemu tanpa rencana. Awalnya cuma obrolan biasa yang entah kenapa selalu nyambung, sampai akhirnya keterusan jadi rutinitas harian.</p>
+    <p>Hal favorit kami: cari makan enak, bertukar cerita receh di akhir hari, dan saling mengingatkan kalau salah satu mulai lupa waktu.</p>
+  </div>
+</section>
+
+<!-- ====== JEJAK / TIMELINE ====== -->
+<section id="timeline">
+  <h2>Jejak</h2>
+  <div class="timeline">
+    <div class="momen">
+      <span class="tgl">Awal Kenal</span>
+      <h3>Chat Pertama</h3>
+      <p>Mulai dari bahas topik random, ujung-ujungnya malah keterusan ngobrol sampai lupa jam.</p>
+    </div>
+    <div class="momen">
+      <span class="tgl">First Hangout</span>
+      <h3>Keluar Bareng</h3>
+      <p>Niatnya makan santai, tapi dua-duanya sama-sama grogi dan sok santai.</p>
+    </div>
+    <div class="momen">
+      <span class="tgl">Resmi</span>
+      <h3>Mulai Bareng</h3>
+      <p>Akhirnya resmi jalan bareng setelah tarik-ulur sekian lama.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PHOTOBOOTH INTERAKTIF ====== -->
+<section id="photobooth">
+  <h2>Photobooth 📸</h2>
+  <div class="pb-wrapper">
+    
+    <!-- KOTAK KIRI: KAMERA & KONTROL -->
+    <div class="pb-cam-box">
+      <div class="video-container">
+        <video id="pb-video" autoplay playsinline></video>
+        <div id="pb-countdown" class="countdown hidden">3</div>
+        <div id="pb-flash" class="flash"></div>
+      </div>
+
+      <div class="pb-controls">
+        <div class="control-group">
+          <label>1. Pilih Tema Bingkai (8 Tema):</label>
+          <div class="btn-group" id="tema-group">
+            <button type="button" class="pill active" data-tema="bloom">Coquette Bloom 🌸</button>
+            <button type="button" class="pill" data-tema="y2k">Y2K Eyes 👀</button>
+            <button type="button" class="pill" data-tema="doodle">Goofy Kumis 🥸</button>
+            <button type="button" class="pill" data-tema="checkers">Checkerboard 🏁</button>
+            <button type="button" class="pill" data-tema="newspaper">Koran Retro 📰</button>
+            <button type="button" class="pill" data-tema="sky">Cloudy Sky ☁️</button>
+            <button type="button" class="pill" data-tema="film">Kodak Film 🎞️</button>
+            <button type="button" class="pill" data-tema="clean">Clean White 🤍</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>2. Tone Warna Kamera:</label>
+          <div class="btn-group" id="filter-group">
+            <button type="button" class="pill active" data-filter="none">Natural</button>
+            <button type="button" class="pill" data-filter="grayscale(100%) contrast(1.15)">B&amp;W</button>
+            <button type="button" class="pill" data-filter="sepia(30%) saturate(1.2) contrast(1.05)">Vintage</button>
+            <button type="button" class="pill" data-filter="contrast(1.15) saturate(1.35) brightness(1.05)">Pop Color</button>
+          </div>
+        </div>
+
+        <div class="pb-actions">
+          <button type="button" id="btn-start-cam" class="btn-main biru">Nyalakan Kamera 🎥</button>
+          <button type="button" id="btn-snap" class="btn-main lime" disabled>Mulai Foto (3 Pose) ⚡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOTAK KANAN: PREVIEW STRIP -->
+    <div class="pb-preview-box">
+      <h3>Preview Strip</h3>
+      <canvas id="pb-canvas" width="340" height="800"></canvas>
+      <input type="text" id="pb-caption" placeholder="Tulis caption strip di sini..." maxlength="30">
+      <div class="pb-save-actions">
+        <button type="button" id="btn-save-galeri" class="btn-main pink" disabled>Simpan ke Galeri ✨</button>
+        <a id="btn-download" class="btn-main putih disabled" download="photobooth-kita.png">Unduh 📥</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== GALERI ====== -->
+<section id="galeri">
+  <div class="galeri-header">
+    <h2>Galeri</h2>
+    <div class="galeri-tabs">
+      <button type="button" class="tab-btn active" data-kategori="semua">Semua Foto</button>
+      <button type="button" class="tab-btn" data-kategori="biasa">Foto Biasa 📷</button>
+      <button type="button" class="tab-btn" data-kategori="photobooth">Hasil Photobooth 🎞️</button>
+    </div>
+  </div>
+
+  <div class="galeri" id="galeri-grid">
+    <figure class="polaroid" data-type="biasa">
+      <span class="badge-foto">Foto Biasa</span>
+      <img src="foto1.jpg" alt="Foto 1" onerror="this.outerHTML='<div class=kosong>📷</div>'">
+      <figcaption>pertama kali foto bareng</figcaption>
+    </figure>
+
+    <figure class="polaroid" data-type="biasa">
+      <span class="badge-foto">Foto Biasa</span>
+      <img src="foto2.jpg" alt="Foto 2" onerror="this.outerHTML='<div class=kosong>📷</div>'">
+      <figcaption>burem tapi tetap estetik</figcaption>
+    </figure>
+
+    <figure class="polaroid" data-type="biasa">
+      <span class="badge-foto">Foto Biasa</span>
+      <img src="foto3.jpg" alt="Foto 3" onerror="this.outerHTML='<div class=kosong>📷</div>'">
+      <figcaption>candid pas lagi cari makan</figcaption>
+    </figure>
+
+    <figure class="polaroid" data-type="biasa">
+      <span class="badge-foto">Foto Biasa</span>
+      <img src="foto4.jpg" alt="Foto 4" onerror="this.outerHTML='<div class=kosong>📷</div>'">
+      <figcaption>edisi rapi setelah sekian lama</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ====== WISHLIST ====== -->
+<section id="wishlist">
+  <h2>Wishlist Berdua</h2>
+  <div class="wish-box">
+    <div class="wish-item done">✅ Nyobain semua tempat mie pedas di kota</div>
+    <div class="wish-item done">✅ Foto bareng tanpa ada yang merem</div>
+    <div class="wish-item">⬜ Road trip jauh berdua tanpa nyasar</div>
+    <div class="wish-item">⬜ Nonton konser atau festival musik bareng</div>
+    <div class="wish-item">⬜ Masak bareng tanpa bikin dapur berantakan</div>
+  </div>
+</section>
+
+<!-- ====== DATA DIRI ====== -->
+<section id="data">
+  <h2>Data Diri</h2>
+  <div class="duo">
+    <div class="kartu cowo">
+      <img class="foto-profil" src="cowo.jpg" alt="Foto cowo" onerror="this.outerHTML='<div class=foto-profil>🧑</div>'">
+      <h3>EPANNN</h3>
+      <div class="baris"><b>Nama</b><span>EPANNN</span></div>
+      <div class="baris"><b>Panggilan</b><span>EPANNN</span></div>
+      <div class="baris"><b>Tanggal lahir</b><span>1 Januari 2000</span></div>
+      <div class="baris"><b>Zodiak</b><span>Capricorn</span></div>
+      <div class="baris"><b>Hobi</b><span>Main game, ngopi</span></div>
+      <div class="baris"><b>Makanan favorit</b><span>Nasi goreng</span></div>
+      <div class="baris"><b>Sifat</b><span>Tenang, cuek tapi peka</span></div>
+      <div class="baris"><b>Kebiasaan</b><span>Ketiduran pas lagi chat</span></div>
+      <div class="baris"><b>Quote</b><span>"Gas aja, ngikut"</span></div>
+    </div>
+
+    <div class="kartu cewe">
+      <img class="foto-profil" src="cewe.jpg" alt="Foto cewe" onerror="this.outerHTML='<div class=foto-profil>👩</div>'">
+      <h3>IPAAA</h3>
+      <div class="baris"><b>Nama</b><span>IPAAA</span></div>
+      <div class="baris"><b>Panggilan</b><span>IPAAA</span></div>
+      <div class="baris"><b>Tanggal lahir</b><span>1 Januari 2001</span></div>
+      <div class="baris"><b>Zodiak</b><span>Aquarius</span></div>
+      <div class="baris"><b>Hobi</b><span>Scroll TikTok, eksplor jajanan</span></div>
+      <div class="baris"><b>Makanan favorit</b><span>Seblak</span></div>
+      <div class="baris"><b>Sifat</b><span>Ekspresif &amp; perhatian</span></div>
+      <div class="baris"><b>Kebiasaan</b><span>Bilang "terserah" pas ditanya makan</span></div>
+      <div class="baris"><b>Quote</b><span>"Terserah, asal enak"</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== RANDOM IDE KEGIATAN ====== -->
+<section class="gacha-sec">
+  <div class="gacha-box">
+    <h3>Bingung mau ngapain?</h3>
+    <p id="hasil-ide">Klik tombol di bawah buat nentuin agenda.</p>
+    <button onclick="acakIde()">Acak Kegiatan 🎲</button>
+  </div>
+</section>
+
+<footer>Diarsipkan oleh EPANNN &amp; IPAAA &mdash; 2026</footer>
+
+<script>
+  /* ====== 1. GACHA KEGIATAN ====== */
+  const daftarIde = [
+    "Cari mie ayam atau bakso terdekat",
+    "Keliling kota sore-sore tanpa tujuan",
+    "Jajan es teh jumbo sambil cerita random",
+    "Nonton film rekomendasi salah satu dari kita",
+    "Mabar game sampai menang minimal sekali",
+    "Nyobain tempat kopi yang belum pernah dikunjungi"
+  ];
+  function acakIde() {
+    const acak = daftarIde[Math.floor(Math.random() * daftarIde.length)];
+    document.getElementById('hasil-ide').textContent = "👉 " + acak;
+  }
+
+  /* ====== 2. SETUP VARIABEL PHOTOBOOTH ====== */
+  const video = document.getElementById('pb-video');
+  const stripCanvas = document.getElementById('pb-canvas');
+  const sCtx = stripCanvas.getContext('2d');
+
+  const btnStart = document.getElementById('btn-start-cam');
+  const btnSnap = document.getElementById('btn-snap');
+  const btnSave = document.getElementById('btn-save-galeri');
+  const btnDownload = document.getElementById('btn-download');
+  const countdownEl = document.getElementById('pb-countdown');
+  const flashEl = document.getElementById('pb-flash');
+  const captionInput = document.getElementById('pb-caption');
+
+  let currentTema = 'bloom';
+  let currentFilter = 'none';
+  let capturedFrames = [];
+
+  /* ====== 3. HELPER STIKER BINGKAI ====== */
+  function drawFlower(ctx, x, y, size, petalColor, centerColor) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = petalColor;
+    ctx.strokeStyle = '#14101f';
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < 5; i++) {
+      ctx.rotate((Math.PI * 2) / 5);
+      ctx.beginPath();
+      ctx.arc(0, -size * 0.55, size * 0.45, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+    }
+    ctx.fillStyle = centerColor;
+    ctx.beginPath();
+    ctx.arc(0, 0, size * 0.35, 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawGooglyEyes(ctx, x, y, size, rot = 0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    [-size * 0.55, size * 0.55].forEach((ox, idx) => {
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#14101f';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(ox, 0, size * 0.5, size * 0.65, 0, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+
+      ctx.fillStyle = '#14101f';
+      ctx.beginPath();
+      ctx.arc(ox + (idx === 0 ? 2 : -2), -2, size * 0.24, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+  }
+
+  function drawRibbon(ctx, x, y, size, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = color;
+    ctx.strokeStyle = '#14101f';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.moveTo(0, 0); ctx.lineTo(-size, -size * 0.6); ctx.lineTo(-size * 0.8, size * 0.6);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0); ctx.lineTo(size, -size * 0.6); ctx.lineTo(size * 0.8, size * 0.6);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(0, 0, size * 0.28, 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawMustacheSticker(ctx, x, y, size, rot = 0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.fillStyle = '#14101f';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(-size * 0.4, -size * 0.5, -size * 1.1, size * 0.1, -size * 1.2, -size * 0.2);
+    ctx.bezierCurveTo(-size * 1.0, size * 0.5, -size * 0.2, size * 0.4, 0, size * 0.15);
+    ctx.bezierCurveTo(size * 0.2, size * 0.4, size * 1.0, size * 0.5, size * 1.2, -size * 0.2);
+    ctx.bezierCurveTo(size * 1.1, size * 0.1, size * 0.4, -size * 0.5, 0, 0);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawCloud(ctx, x, y, size) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = '#ffffff';
+    ctx.strokeStyle = '#14101f';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(-size * 0.4, 0, size * 0.35, 0, Math.PI * 2);
+    ctx.arc(0, -size * 0.2, size * 0.45, 0, Math.PI * 2);
+    ctx.arc(size * 0.45, 0, size * 0.35, 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  /* ====== 4. RENDER 8 TEMA STRIP PHOTOBOOTH ====== */
+  function renderStrip() {
+    const W = stripCanvas.width;
+    const H = stripCanvas.height;
+
+    const temaStyles = {
+      bloom:     { bg: '#ffd6e8', border: '#14101f', text: '#14101f', tag: 'COQUETTE BLOOM ✿' },
+      y2k:       { bg: '#b69cff', border: '#14101f', text: '#14101f', tag: 'Y2K CHAOS CLUB ⚡' },
+      doodle:    { bg: '#fff8e7', border: '#14101f', text: '#14101f', tag: 'GOOFY BOOTH 2026' },
+      checkers:  { bg: '#ffffff', border: '#14101f', text: '#14101f', tag: 'RACING CLUB 🏁' },
+      newspaper: { bg: '#eae4d7', border: '#14101f', text: '#14101f', tag: 'THE DAILY US • VOL.01' },
+      sky:       { bg: '#9be0ff', border: '#14101f', text: '#14101f', tag: 'HEAD IN THE CLOUDS ☁️' },
+      film:      { bg: '#14101f', border: '#c6ff3d', text: '#f6f2ff', tag: 'KODAK GOLD 400 • 35MM' },
+      clean:     { bg: '#ffffff', border: '#14101f', text: '#14101f', tag: 'KITA BERDUA • 2026' }
+    };
+    const st = temaStyles[currentTema];
+
+    sCtx.fillStyle = st.bg;
+    sCtx.fillRect(0, 0, W, H);
+
+    if (currentTema === 'checkers') {
+      const sq = 20;
+      for (let x = 0; x < W; x += sq) {
+        for (let y = 0; y < H; y += sq) {
+          if ((x / sq + y / sq) % 2 === 0) {
+            sCtx.fillStyle = '#14101f';
+            sCtx.fillRect(x, y, sq, sq);
+          }
+        }
+      }
+      sCtx.fillStyle = '#c6ff3d';
+      sCtx.fillRect(18, 695, W - 36, 82);
+      sCtx.strokeStyle = '#14101f';
+      sCtx.lineWidth = 3;
+      sCtx.strokeRect(18, 695, W - 36, 82);
+    } else if (currentTema === 'newspaper') {
+      sCtx.fillStyle = 'rgba(20,16,31,0.12)';
+      sCtx.font = 'bold 10px monospace';
+      for (let y = 16; y < H; y += 14) {
+        sCtx.fillText('BREAKING NEWS • LOVE STORY • EDITION 2026 •', 10, y);
+      }
+      sCtx.fillStyle = '#eae4d7';
+      sCtx.fillRect(18, 695, W - 36, 82);
+      sCtx.strokeStyle = '#14101f';
+      sCtx.lineWidth = 2;
+      sCtx.strokeRect(18, 695, W - 36, 82);
+    } else if (currentTema === 'film') {
+      sCtx.fillStyle = '#f6f2ff';
+      for (let y = 18; y < H - 18; y += 28) {
+        sCtx.fillRect(7, y, 10, 16);
+        sCtx.fillRect(W - 17, y, 10, 16);
+      }
+    } else if (currentTema !== 'clean') {
+      sCtx.fillStyle = 'rgba(20,16,31,0.12)';
+      for (let px = 12; px < W; px += 18) {
+        for (let py = 12; py < H; py += 18) {
+          sCtx.beginPath();
+          sCtx.arc(px, py, 1.5, 0, Math.PI * 2);
+          sCtx.fill();
+        }
+      }
+    }
+
+    sCtx.strokeStyle = st.border;
+    sCtx.lineWidth = 6;
+    sCtx.strokeRect(3, 3, W - 6, H - 6);
+
+    const slotW = 292;
+    const slotH = 208;
+    const startX = 24;
+
+    for (let i = 0; i < 3; i++) {
+      const y = 24 + i * (slotH + 18);
+      if (capturedFrames[i]) {
+        sCtx.drawImage(capturedFrames[i], startX, y, slotW, slotH);
+      } else {
+        sCtx.fillStyle = currentTema === 'film' ? '#251f36' : '#ede7fa';
+        sCtx.fillRect(startX, y, slotW, slotH);
+        sCtx.fillStyle = st.text;
+        sCtx.font = 'bold 16px "Bricolage Grotesque", sans-serif';
+        sCtx.textAlign = 'center';
+        sCtx.fillText(`POSE ${i + 1}`, W / 2, y + slotH / 2);
+      }
+      sCtx.strokeStyle = st.border;
+      sCtx.lineWidth = 3;
+      sCtx.strokeRect(startX, y, slotW, slotH);
+    }
+
+    if (currentTema === 'bloom') {
+      drawFlower(sCtx, 28, 28, 16, '#fff', '#ffde59');
+      drawRibbon(sCtx, W - 32, 32, 18, '#ff5fa8');
+      drawFlower(sCtx, W - 26, 240, 15, '#ff5fa8', '#fff');
+      drawFlower(sCtx, 26, 465, 17, '#c6ff3d', '#ff5fa8');
+      drawRibbon(sCtx, 36, 705, 16, '#ff5fa8');
+      drawFlower(sCtx, W - 34, 710, 18, '#fff', '#ff5fa8');
+    } else if (currentTema === 'y2k') {
+      drawGooglyEyes(sCtx, 36, 26, 14, -0.2);
+      drawGooglyEyes(sCtx, W - 38, 240, 15, 0.25);
+      drawGooglyEyes(sCtx, 34, 465, 14, -0.15);
+      sCtx.font = '24px sans-serif';
+      sCtx.fillText('⚡', W - 32, 36);
+      sCtx.fillText('✦', 30, 715);
+      sCtx.fillText('👾', W - 34, 718);
+    } else if (currentTema === 'doodle') {
+      drawMustacheSticker(sCtx, 42, 26, 18, -0.2);
+      drawMustacheSticker(sCtx, W - 42, 242, 18, 0.25);
+      drawGooglyEyes(sCtx, 36, 465, 13, 0.1);
+      sCtx.font = '24px sans-serif';
+      sCtx.fillText('🎩', W - 34, 34);
+      sCtx.fillText('🧔', 34, 718);
+      sCtx.fillText('🖍️', W - 34, 718);
+    } else if (currentTema === 'sky') {
+      drawCloud(sCtx, 38, 30, 22);
+      drawCloud(sCtx, W - 42, 245, 24);
+      drawCloud(sCtx, 36, 470, 20);
+      sCtx.font = '22px sans-serif';
+      sCtx.fillText('✨', W - 30, 36);
+      sCtx.fillText('🌈', 34, 718);
+      sCtx.fillText('☀️', W - 34, 718);
+    }
+
+    const customCap = captionInput.value.trim() || 'EPANNN & IPAAA';
+    const tgl = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+    
+    sCtx.fillStyle = st.text;
+    sCtx.textAlign = 'center';
+    sCtx.font = 'bold 26px "Caveat", cursive';
+    sCtx.fillText(customCap, W / 2, 730);
+
+    sCtx.font = 'bold 11px "Bricolage Grotesque", sans-serif';
+    sCtx.fillText(`${st.tag} • ${tgl}`, W / 2, 760);
+
+    if (capturedFrames.length === 3) {
+      btnDownload.href = stripCanvas.toDataURL('image/png');
+    }
+  }
+  renderStrip();
+
+  /* ====== 5. EVENT KONTROL ====== */
+  document.querySelectorAll('#tema-group .pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#tema-group .pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentTema = btn.dataset.tema;
+      renderStrip();
+    });
+  });
+
+  document.querySelectorAll('#filter-group .pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#filter-group .pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      video.style.filter = currentFilter;
+    });
+  });
+
+  captionInput.addEventListener('input', renderStrip);
+
+  btnStart.addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+      video.srcObject = stream;
+      btnStart.textContent = 'Kamera Aktif ✅';
+      btnSnap.disabled = false;
+    } catch (err) {
+      alert('Gagal mengakses kamera. Pastikan izin kamera di browser sudah diaktifkan!');
+    }
+  });
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  btnSnap.addEventListener('click', async () => {
+    btnSnap.disabled = true;
+    btnSave.disabled = true;
+    btnDownload.classList.add('disabled');
+    capturedFrames = [];
+    renderStrip();
+
+    for (let pose = 0; pose < 3; pose++) {
+      countdownEl.classList.remove('hidden');
+      for (let c = 3; c >= 1; c--) {
+        countdownEl.textContent = c;
+        await sleep(850);
+      }
+      countdownEl.textContent = '📸';
+      
+      flashEl.classList.add('active');
+      setTimeout(() => flashEl.classList.remove('active'), 200);
+
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = 584;
+      tempCanvas.height = 416;
+      const tCtx = tempCanvas.getContext('2d');
+
+      tCtx.save();
+      tCtx.filter = currentFilter;
+      tCtx.translate(tempCanvas.width, 0);
+      tCtx.scale(-1, 1);
+
+      const vRatio = video.videoWidth / video.videoHeight;
+      const tRatio = tempCanvas.width / tempCanvas.height;
+      let sx = 0, sy = 0, sw = video.videoWidth, sh = video.videoHeight;
+      if (vRatio > tRatio) {
+        sw = video.videoHeight * tRatio;
+        sx = (video.videoWidth - sw) / 2;
+      } else {
+        sh = video.videoWidth / tRatio;
+        sy = (video.videoHeight - sh) / 2;
+      }
+      tCtx.drawImage(video, sx, sy, sw, sh, 0, 0, tempCanvas.width, tempCanvas.height);
+      tCtx.restore();
+
+      capturedFrames.push(tempCanvas);
+      renderStrip();
+      await sleep(500);
+    }
+
+    countdownEl.classList.add('hidden');
+    btnSnap.disabled = false;
+    btnSnap.textContent = 'Foto Ulang 🔄';
+    btnSave.disabled = false;
+    btnDownload.classList.remove('disabled');
+  });
+
+  /* ====== 6. SIMPAN OTOMATIS KE GALERI & FILTER KATEGORI ====== */
+  const galeriGrid = document.getElementById('galeri-grid');
+  const STORAGE_KEY = 'kita_berdua_photobooth_v2';
+
+  function loadSavedPhotobooth() {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    saved.forEach(item => appendPhotoboothCard(item));
+  }
+
+  function appendPhotoboothCard(item) {
+    const fig = document.createElement('figure');
+    fig.className = 'polaroid is-photobooth';
+    fig.dataset.type = 'photobooth';
+    fig.dataset.id = item.id;
+    fig.innerHTML = `
+      <span class="badge-foto pb-badge">Photobooth 🎞️</span>
+      <button type="button" class="btn-hapus" title="Hapus foto" onclick="hapusPhotobooth(${item.id})">✕</button>
+      <img src="${item.dataUrl}" alt="${item.caption}">
+      <figcaption>${item.caption}</figcaption>
+    `;
+    galeriGrid.prepend(fig);
+  }
+
+  btnSave.addEventListener('click', () => {
+    if (capturedFrames.length < 3) return;
+    const dataUrl = stripCanvas.toDataURL('image/jpeg', 0.88);
+    const caption = captionInput.value.trim() || 'photobooth kita ✨';
+    const item = { id: Date.now(), dataUrl, caption };
+
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    saved.push(item);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+
+    appendPhotoboothCard(item);
+    btnSave.disabled = true;
+    alert('Berhasil disimpan! Langsung masuk ke Galeri ya 🎉');
+    document.getElementById('galeri').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  window.hapusPhotobooth = function(id) {
+    if (!confirm('Hapus hasil photobooth ini dari galeri?')) return;
+    let saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    saved = saved.filter(x => x.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    const el = document.querySelector(`.polaroid[data-id="${id}"]`);
+    if (el) el.remove();
+  };
+
+  document.querySelectorAll('.tab-btn').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const kat = tab.dataset.kategori;
+
+      document.querySelectorAll('#galeri-grid .polaroid').forEach(card => {
+        if (kat === 'semua' || card.dataset.type === kat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  loadSavedPhotobooth();
+</script>
+
+</body>
+</html>
